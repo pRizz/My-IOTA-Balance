@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="Peter Ryszkiewicz">
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <title>My IOTA Balance</title>
+
+    <script type="text/javascript" src="deps/jquery.min.js"></script>
+    <script type="text/javascript" src="deps/bootstrap.min.js"></script>
+    <script type="text/javascript" src="deps/angular.min.js"></script>
+    <script type="text/javascript" src="deps/iota.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+</head>
+<body style="color: #4a4a4a">
+
+<div class="container" ng-app="totalBalanceApp">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li class="nav-item">
+                    <a class="nav-link active" href="" onclick="window.location.reload(true)">Refresh</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/pRizz/My-IOTA-Balance">Source</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://prizz.github.io/My-IOTA-Balance/">My IOTA Balance</a></li>
+                        <li><a href="https://prizz.github.io/iota-transaction-spammer-webapp/">IOTA Transaction Spammer</a></li>
+                        <li><a href="https://prizz.github.io/iota-seed-encryptor-decryptor/">IOTA Seed Encryptor/Decryptor</a></li>
+                        <li><a href="https://prizz.github.io/iota-buy-strategy/">IOTA Buy Strategy</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">My IOTA Balance <img src="iotaLogo.png" class="logo"></h3>
+    </div>
+
+    <div class="row marketing text-center">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>Your Balance</h2>
+            <h1 id="totalBalance">
+                ...
+            </h1>
+            <h2 id="totalBalanceToUSD"></h2>
+        </div>
+    </div>
+
+    <div id="httpWarningAlert" class="row marketing hidden">
+        <div class="col-md-12 text-center">
+            <h4 class="alert alert-warning" role="alert">
+                ⚠️ Warning: Using this site over http, and not https, allows your traffic to be intercepted. This could expose your addresses or your preceived balance may be altered in transit. Use over https whenver possible: <a href="https://prizz.github.io/My-IOTA-Balance/">My IOTA Balance</a>, although using http does allow access to more nodes.
+            </h4>
+        </div>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-md-12 text-center">
+            <h2>Step 1: Paste your <strong>addresses</strong>, one per line, and press the Get Balance button</h2>
+            <textarea class="form-control" id="addressesToGetBalance" rows="3"></textarea>
+            <p></p>
+            <a role="button" class="btn btn-success btn-lg btn-block" onclick="getBalances()">
+                Get Balance
+            </a>
+        </div>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-md-12 text-center">
+            <h2>Step 2: Bookmark this website</h2>
+            <h3>
+                After correctly retrieving your balance, the URL of this site has changed to include your addresses. Now, if you bookmark this website, your addresses can be used again for easy retrieval!
+            </h3>
+        </div>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-md-12 text-center">
+            <h3>Try this out on your mobile device!</h3>
+        </div>
+    </div>
+
+    <div class="row marketing text-center">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Privacy</h1>
+            <h2>
+                If this website is served over https, only you and the node owners will know your addresses and your balance. Alternatively, if this site is served over http, then any person snooping the network traffic may read your addresses and balance, and potentially alter your perceived balance.
+            </h2>
+        </div>
+    </div>
+
+    <div class="row marketing text-center">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>About the Project</h1>
+            <h2>
+                This project is hosted on GitHub at <a href="https://github.com/pRizz/My-IOTA-Balance">https://github.com/pRizz/My-IOTA-Balance</a> under the MIT license.
+            </h2>
+        </div>
+    </div>
+
+    <div class="row marketing text-center">
+        <div class="col-md-8 col-md-offset-2">
+            <pre>
+MIT License
+
+Copyright (c) 2017 Peter Ryszkiewicz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+            </pre>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="https://github.com/pRizz/My-IOTA-Balance">Fork this on GitHub!</a></p>
+        <p><a href="https://github.com/pRizz/My-IOTA-Balance/archive/master.zip">Download this webapp</a></p>
+        <p>
+            If you found this useful, please consider donating IOTA to:
+        </p>
+        <pre>ARDPDHLZPQZRDBPKTZBIK9OFKCJMGCHFQJTQEXL9KRIVSHNRGHJCEOCMRFXGJMQXDVGNFTTS9GUIOJXXW9RONFYJKW</pre>
+        <p>© Peter Ryszkiewicz 2017</p>
+    </footer>
+
+    <div class="modal fade" id="invalidAddressModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Invalid Address Detected</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Warning, invalid address detected:
+                </div>
+                <pre id="invalidAddress">
+
+                </pre>
+                <div>
+                    Valid addresses should have 90 Trytes (characters A through Z and the letter 9)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="noAddressesModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">No Addresses Entered</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You didn't enter any addresses into the text box!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="retrievalErrorModal" role="dialog" ng-controller="hostDropdownController">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Error</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        There was an error retrieving your balance:
+                    </div>
+                    <pre id="retrievalErrorPre"></pre>
+                    <div>
+                        Try picking another host
+                    </div>
+
+                    <select id="hostSelection" ng-model="selectedHost" ng-options="host for host in hostList">
+                    </select>
+
+                    <div>
+                        Or try visiting the http-only website to get access to more IOTA nodes:
+                    </div>
+                    <a href="TODO">TODO</a>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
