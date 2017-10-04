@@ -16,12 +16,13 @@ const httpProviders = [
     "http://88.198.230.98:14265",
     "http://176.9.3.149:14265",
     "http://node.lukaseder.de:14265",
-    "http://iota.preissler.me:80"
+    "http://iota.preissler.me:80",
+    "http://iotanode.prizziota.com:80", // author's node :)
 ]
 
 const httpsProviders = [
-    'https://n1.iota.nu:443',
-    'https://iota.preissler.me:443'
+    'https://iota.preissler.me:443',
+    "https://iotanode.prizziota.com:443", // author's node :)
 ]
 
 const iotaLib = window.IOTA
