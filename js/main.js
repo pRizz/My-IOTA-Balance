@@ -91,7 +91,7 @@ function getBalances() {
         $('#totalBalance')[0].innerText = `${totalBalanceLocalized} IOTA`
         updateBalanceInUSD()
 
-        history.pushState(null, '', '/My-IOTA-Balance/?addresses=' + addressesLessEmptyLines.join(','))
+        history.pushState(null, '', '/My-IOTA-Balance/index.html?addresses=' + addressesLessEmptyLines.join(','))
     })
 }
 
