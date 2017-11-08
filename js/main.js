@@ -4,25 +4,13 @@
  */
 
 const httpProviders = [
-    "http://iota.bitfinex.com:80",
-    "http://service.iotasupport.com:14265",
-    "http://node01.iotatoken.nl:14265",
-    "http://node02.iotatoken.nl:14265",
-    "http://node03.iotatoken.nl:15265",
-    "http://mainnet.necropaz.com:14500",
-    "http://5.9.137.199:14265",
-    "http://5.9.118.112:14265",
-    "http://5.9.149.169:14265",
-    "http://88.198.230.98:14265",
-    "http://176.9.3.149:14265",
-    "http://node.lukaseder.de:14265",
-    "http://iota.preissler.me:80",
-    "http://iotanode.prizziota.com:80", // author's node :)
+    "http://iotanode.prizziota.com:80",
+    "http://iota-node-apps.prizziota.com:80"
 ]
 
 const httpsProviders = [
-    'https://iota.preissler.me:443',
-    "https://iotanode.prizziota.com:443", // author's node :)
+    "https://iotanode.prizziota.com:443",
+    "https://iota-node-apps.prizziota.com:443"
 ]
 
 const iotaLib = window.IOTA
