@@ -4,13 +4,11 @@
  */
 
 const httpProviders = [
-    "http://iotanode.prizziota.com:80",
-    "http://iota-node-apps.prizziota.com:80"
+    "http://iota-node-nelson.prizziota.com:80",
 ]
 
 const httpsProviders = [
-    "https://iotanode.prizziota.com:443",
-    "https://iota-node-apps.prizziota.com:443"
+    "https://iota-node-nelson.prizziota.com:443",
 ]
 
 const iotaLib = window.IOTA
